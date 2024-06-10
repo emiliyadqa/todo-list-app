@@ -49,9 +49,10 @@ h1 {
 .input {
   padding: 2rem;
   border: 0;
-  border-bottom: 5px solid var(--color-accent);
+  border-bottom: 3px solid var(--color-accent);
   outline: 0;
   font-size: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 /* Buttons */
@@ -99,4 +100,17 @@ h1 {
 
 .card__content {
   padding: 4rem;
+}
+
+/* Block */
+
+.block {
+  background: #fff;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px 10px var(--color-borders);
 }
