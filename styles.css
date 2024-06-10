@@ -42,3 +42,12 @@ h1 {
 .icon-done {
   color: rgb(106, 170, 106);
 }
+
+/* Inputs */
+.input {
+  padding: 2rem;
+  border: 0;
+  border-bottom: 5px solid var(--color-accent);
+  outline: 0;
+  font-size: 1.5rem;
+}
