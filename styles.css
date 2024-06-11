@@ -47,12 +47,12 @@ h1 {
   color: #bb271a;
 }
 
-.icon-done {
+.icon--done {
   color: rgb(106, 170, 106);
 }
 
 /* Inputs */
-.input {
+.input--todo {
   padding: 2rem;
   border: 0;
   border-bottom: 3px solid var(--color-accent);
@@ -72,12 +72,14 @@ h1 {
   color: var(--color-headings);
   letter-spacing: 0.5px;
   cursor: pointer;
+  outline: none;
 }
 
 .btn-icon {
   background: none;
   border: 0;
   cursor: pointer;
+  outline: none;
 }
 
 .btn-primary {
