@@ -102,14 +102,12 @@ const handleEditTask = (event) => {
 const handleEditInput = (event) => {
   const listItem = event.target.closest(".list__item");
   const newValue = listItem.firstChild.value;
-
-  console.log(newValue);
-
-  const listItemNewValue = createListItem(newValue);
-
-  console.log(listItemNewValue);
-
-  listTask.replaceChild(listItemNewValue, listItem);
+  if (!newValue) {
+    listTask.removeChild(listItem);
+  } else {
+    const listItemNewValue = createListItem(newValue);
+    listTask.replaceChild(listItemNewValue, listItem);
+  }
 };
 
 const handleDoneTask = (event) => {
