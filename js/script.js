@@ -24,24 +24,35 @@ const createListItem = (content) => {
     listItem.textContent = content;
   }
 
-  const iconContainer = createIconContainer();
+  const iconContainer = createIconContainerWithAll();
   listItem.appendChild(iconContainer);
 
   return listItem;
 };
 
 //Create div class="icon-container"
-const createIconContainer = () => {
+const createIconContainerWithAll = () => {
   const iconContainer = document.createElement("div");
   iconContainer.className = "icon-container";
 
   const btnDone = createBtnIcon("check_circle", "icon--done", handleDoneTask);
-  const btnEdit = createBtnIcon("edit", "icon--edit");
+  const btnEdit = createBtnIcon("edit", "icon--edit", handleEditTask);
   const btnDelete = createBtnIcon("delete", "icon--delete", handleDeleteTask);
 
   iconContainer.appendChild(btnDone);
   iconContainer.appendChild(btnEdit);
   iconContainer.appendChild(btnDelete);
+
+  return iconContainer;
+};
+
+const createIconContainerWithDoneAll = () => {
+  const iconContainer = document.createElement("div");
+  iconContainer.className = "icon-container";
+
+  const btnAllDone = createBtnIcon("done_all", "icon--done", handleEditInput);
+
+  iconContainer.appendChild(btnAllDone);
 
   return iconContainer;
 };
@@ -60,6 +71,45 @@ const createBtnIcon = (iconText, iconClass, eventHandler) => {
   btnIcon.addEventListener("click", eventHandler);
 
   return btnIcon;
+};
+
+const handleEditTask = (event) => {
+  const listItem = event.target.closest(".list__item");
+  const listItemText = listItem.firstChild;
+
+  const editListInput = document.createElement("li");
+  editListInput.className = "list__item";
+  editListInput.style = " background: #f6eaf8;;";
+
+  const inputListItem = document.createElement("input");
+  inputListItem.type = "text";
+  inputListItem.value = listItemText.textContent;
+  inputListItem.textContent = listItemText.textContent;
+  inputListItem.className = "input--edit";
+
+  editListInput.appendChild(inputListItem);
+
+  const iconContainer = createIconContainerWithDoneAll();
+  editListInput.appendChild(iconContainer);
+
+  setTimeout(() => {
+    inputListItem.focus();
+  }, 0);
+
+  listTask.replaceChild(editListInput, listItem);
+};
+
+const handleEditInput = (event) => {
+  const listItem = event.target.closest(".list__item");
+  const newValue = listItem.firstChild.value;
+
+  console.log(newValue);
+
+  const listItemNewValue = createListItem(newValue);
+
+  console.log(listItemNewValue);
+
+  listTask.replaceChild(listItemNewValue, listItem);
 };
 
 const handleDoneTask = (event) => {

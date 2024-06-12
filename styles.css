@@ -63,6 +63,15 @@ h1 {
   text-align: center;
 }
 
+.input--edit {
+  border: 0;
+
+  outline: 0;
+  font-size: 1.5rem;
+  background: #f6eaf8;
+  width: 100%;
+}
+
 /* Buttons */
 .btn {
   padding: 1rem 5rem;
