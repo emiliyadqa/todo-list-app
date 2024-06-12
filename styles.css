@@ -140,12 +140,15 @@ h1 {
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   box-shadow: 0 0 2px 2px var(--color-borders);
 }
 .block--input {
   transform: translateY(-3rem);
+}
+
+.block--list {
+  min-height: 40rem;
 }
 
 /* List */
