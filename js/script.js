@@ -8,6 +8,8 @@ const handleAddTask = () => {
     addTask(task);
     inputTodo.value = "";
   }
+
+  setListToLocalStorage();
 };
 btnAddTask.addEventListener("click", handleAddTask);
 
@@ -97,6 +99,8 @@ const handleEditTask = (event) => {
   }, 0);
 
   listTask.replaceChild(editListInput, listItem);
+
+  setListToLocalStorage();
 };
 
 const handleEditInput = (event) => {
@@ -108,19 +112,42 @@ const handleEditInput = (event) => {
     const listItemNewValue = createListItem(newValue);
     listTask.replaceChild(listItemNewValue, listItem);
   }
+
+  setListToLocalStorage();
 };
 
 const handleDoneTask = (event) => {
   const listItem = event.target.closest(".list__item");
   listTask.removeChild(listItem);
+  setListToLocalStorage();
 };
 
 const handleDeleteTask = (event) => {
   const listItem = event.target.closest(".list__item");
   listTask.removeChild(listItem);
+  setListToLocalStorage();
 };
 
 // console.log(addTask("to do"));
 // console.log(createListItem("To do"));
 // console.log(createIconContainer());
 // console.log(createBtnIcon("edit", "icon--edit"));
+
+const setListToLocalStorage = () => {
+  const tasks = [];
+
+  listTask.querySelectorAll(".list__item").forEach((task) => {
+    tasks.push(task.firstChild.textContent);
+  });
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+};
+
+const loadListFromLocalStorage = () => {
+  const tasks = JSON.parse(localStorage.getItem("tasks"));
+  tasks.forEach((task) => {
+    addTask(task);
+  });
+};
+
+loadListFromLocalStorage();
