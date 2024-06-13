@@ -19,6 +19,14 @@ inputTodo.addEventListener("keydown", (event) => {
   }
 });
 
+inputTodo.addEventListener("focus", (event) => {
+  event.target.placeholder = "";
+});
+
+inputTodo.addEventListener("blur", (event) => {
+  event.target.placeholder = "What would you like to add?";
+});
+
 const addTask = (task) => {
   const listItem = createListItem(task);
   listTask.appendChild(listItem);
@@ -150,7 +158,7 @@ const setListToLocalStorage = () => {
 };
 
 const loadListFromLocalStorage = () => {
-  const tasks = JSON.parse(localStorage.getItem("tasks"));
+  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   tasks.forEach((task) => {
     addTask(task);
   });
