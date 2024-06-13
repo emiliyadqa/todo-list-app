@@ -13,6 +13,12 @@ const handleAddTask = () => {
 };
 btnAddTask.addEventListener("click", handleAddTask);
 
+inputTodo.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    handleAddTask();
+  }
+});
+
 const addTask = (task) => {
   const listItem = createListItem(task);
   listTask.appendChild(listItem);
